@@ -147,11 +147,11 @@ export default function UserProfile() {
           processData: false,
           success: function(data) {
             console.log(data);
-            if (data.idBoss === "0") {
-              data.code = "201";
-            } else {
-              data.code = "200";
-            }
+            // if (data.idBoss === "0") {
+            //   data.code = "201";
+            // } else {
+            //   data.code = "200";
+            // }
             dispatch({
               type: "SET_LOGIN",
               data: data

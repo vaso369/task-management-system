@@ -102,7 +102,7 @@ export default function SimpleList() {
           </ListItemIcon>
           <ListItemText primary="Done tasks" />
         </ListItem>
-        {state.user.code === "200" ? null : (
+        {state.loggedIn === true && state.user.code === "200" ? null : (
           <ListItem button onClick={handleClickTeam}>
             <ListItemIcon>
               <PeopleOutlineIcon />
