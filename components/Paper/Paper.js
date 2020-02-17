@@ -8,19 +8,19 @@ import Header from "./../Header/Header";
 
 export default function SimplePaper() {
   const state = useStateGlobal();
-  const height =
-    state.loggedIn === true && state.user.code === "200" ? "100vh" : "90vh";
-  const margin =
-    state.loggedIn === true && state.user.code === "200" ? "0" : "8.5%";
+  // const height =
+  //   state.loggedIn === true && state.user.code === "200" ? "100vh" : "90vh";
+  // const margin =
+  //   state.loggedIn === true && state.user.code === "200" ? "0" : "8.5%";
   const useStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
       flexWrap: "wrap",
       width: "57.5%",
       "& > *": {
-        margin: `${margin} 0% 0 0`,
+        margin: `0 0% 0 0`,
         width: "100%",
-        height: height
+        height: "100vh"
       }
     }
   }));
