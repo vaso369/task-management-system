@@ -9,9 +9,9 @@ import Header from "./../Header/Header";
 export default function SimplePaper() {
   const state = useStateGlobal();
   const height =
-    state.user.code === "200" && state.loggedIn === true ? "100vh" : "90vh";
+    state.loggedIn === true && state.user.code === "200" ? "100vh" : "90vh";
   const margin =
-    state.user.code === "200" && state.loggedIn === true ? "0" : "8.5%";
+    state.loggedIn === true && state.user.code === "200" ? "0" : "8.5%";
   const useStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
