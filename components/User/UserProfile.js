@@ -257,7 +257,7 @@ export default function UserProfile() {
           </CardActions>
         </Card>
 
-        {state.user.code === "200" ? (
+        {state.user.code === "200" && state.loggedIn === true ? (
           <Card className={classes.card}>
             <BossInfo />{" "}
           </Card>

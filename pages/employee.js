@@ -16,7 +16,7 @@ const Employee = () => {
       </Head>
       <div>
         <Sidebar />
-        {/* <Paper /> */}
+        <Paper />
         <UserProfile />
 
         <style jsx>{`

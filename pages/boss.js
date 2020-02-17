@@ -17,7 +17,7 @@ const Boss = () => {
       </Head>
       <div>
         <Sidebar />
-        {/* <Paper /> */}
+        <Paper />
         <UserProfile />
 
         <style jsx>{`
