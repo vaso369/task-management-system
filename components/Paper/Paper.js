@@ -36,7 +36,7 @@ export default function SimplePaper() {
   console.log(state);
   return (
     <React.Fragment>
-      {state.user.idBoss === "0" ? <Header /> : null}
+      {state.loggedIn === true && state.user.idBoss === "0" ? <Header /> : null}
 
       <div className={classes.root}>
         <Paper
