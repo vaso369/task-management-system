@@ -40,7 +40,7 @@ const OneEmployee = ({ props }) => {
           <Avatar
             alt="Remy Sharp"
             src={
-              "http://localhost/task-management-sys-v1/backend/app/" +
+              "https://api-task-management.000webhostapp.com/backend/app/" +
               props.imagePath
             }
           />
