@@ -2,7 +2,7 @@
 // import { useStateGlobal } from "../src/GlobalState";
 // const state = useStateGlobal();
 
-export const url = "https://task-sys-backend.herokuapp.com/index.php";
+export const url = "https://api-task-management.000webhostapp.com/backend/index.php";
 
 export const picturePath =
   "https://task-sys-api.000webhostapp.com/backend/app/";
