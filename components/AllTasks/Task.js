@@ -114,7 +114,7 @@ export default function Task(props) {
               alt={state.user.emp_first_name + " " + state.user.emp_last_name}
               src={
                 state.user.imagePath !== ""
-                  ? "http://localhost/task-management-sys-v1/backend/app/" +
+                  ? "https://api-task-management.000webhostapp.com/backend/app/" +
                     props.data.imagePath
                   : state.source
               }
