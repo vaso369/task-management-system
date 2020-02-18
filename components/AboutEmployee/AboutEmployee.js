@@ -67,7 +67,7 @@ const AboutEmployee = () => {
               state.aboutEmployeeData[0].last_name
             }
             src={
-              "http://localhost/task-management-sys-v1/backend/app/" +
+              "https://api-task-management.000webhostapp.com/backend/app/" +
               state.aboutEmployeeData[0].imagePath
             }
             className={classes.large}
