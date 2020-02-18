@@ -92,7 +92,7 @@ export default function UserProfile() {
               alt={state.user.boss_first_name + " " + state.user.boss_last_name}
               src={
                 state.user.imagePath !== ""
-                  ? "http://localhost/task-management-sys-v1/backend/app/" +
+                  ? "https://api-task-management.000webhostapp.com/backend/app/" +
                     state.user.boss_imagePath
                   : state.source
               }
