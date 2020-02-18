@@ -106,7 +106,7 @@ const SearchUsers = () => {
           >
             <Avatar
               alt={option.first_name + " " + option.last_name}
-              src={`http://localhost/task-management-sys-v1/backend/app/${option.imagePath}`}
+              src={`https://api-task-management.000webhostapp.com/backend/app/${option.imagePath}`}
               className={classes.small}
             />
             {option.first_name + " " + option.last_name}
