@@ -10,37 +10,14 @@ const Logout = () => {
   const dispatch = useDispatchState();
 
   const logoutUser = () => {
-  //  localStorage.removeItem("token");
+    //  localStorage.removeItem("token");
     dispatch({
       type: "SET_LOGOUT"
     });
+    dispatch({
+      type: "ALL_TASKS"
+    });
     Router.push("/");
-
-    // $.ajax({
-    //   url: url + "?page=logout",
-    //   headers: {
-    //     Authorization: "JWT" + " " + localStorage.getItem("token")
-    //   },
-    //   method: "POST",
-    //   dataType: "json",
-    //   data: {
-    //     action: "logout"
-    //   },
-    //   success: function(data) {
-    //     console.log(data);
-    //     // setLoggedIn(true);
-    //     //console.log(loggedIn);
-    //     // window.location.href = `${urlRedirect}`;
-    //     dispatch({
-    //       type: "SET_LOGOUT"
-    //     });
-    //     Router.push("/");
-    //   },
-    //   error: function(xhr) {
-    //     console.log(xhr);
-    //     //  alert("You are not registered!");
-    //   }
-    // });
   };
 
   return (

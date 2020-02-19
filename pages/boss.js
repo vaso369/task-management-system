@@ -1,5 +1,4 @@
 import React from "react";
-//import UserProfile from "../components/User/UserProfile";
 import { useStateGlobal } from "../src/GlobalState";
 import Logout from "../components/Logout/Logout";
 import Head from "next/head";

@@ -1,4 +1,5 @@
 import React from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Register from "../Register/Register";
@@ -34,7 +35,7 @@ export default function SimplePaper() {
     }
   }
   console.log(state);
-  return (
+  const content = state.loggedIn ? (
     <React.Fragment>
       {state.loggedIn === true && state.user.idBoss === "0" ? <Header /> : null}
 
@@ -47,11 +48,9 @@ export default function SimplePaper() {
           }}
         >
           {component}
-          {/* <AllTasks />
-        {state.editUserInfo === true ? <Register /> : null} */}
-          {/* {state.allTasks === true ? <AllTasks /> : null} */}
         </Paper>
       </div>
     </React.Fragment>
-  );
+  ) : null;
+  return content;
 }

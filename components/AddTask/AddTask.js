@@ -1,9 +1,8 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+
+import { Button, TextField, Modal } from "@material-ui/core";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import SendIcon from "@material-ui/icons/Send";
-import TextField from "@material-ui/core/TextField";
-import Modal from "@material-ui/core/Modal";
 import { url } from "../../consts/consts";
 import $ from "jquery";
 import { makeStyles } from "@material-ui/core/styles";
@@ -80,7 +79,6 @@ const AddTask = ({ props, employee }) => {
       document.getElementsByClassName("MuiOutlinedInput-notchedOutline")[
         classIndex + 1
       ].style.border = "2px solid green";
-      //    okArray = [];
 
       document.getElementsByClassName("MuiFormHelperText-root")[
         classIndex

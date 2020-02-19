@@ -1,6 +1,6 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+
+import { TextField, Button } from "@material-ui/core";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -111,9 +111,9 @@ const EditProfile = () => {
       console.log(forInsert);
       $.ajax({
         url: url + "?page=edit_user",
-//         headers: {
-//           Authorization: "JWT" + " " + localStorage.getItem("token")
-//         },
+        //         headers: {
+        //           Authorization: "JWT" + " " + localStorage.getItem("token")
+        //         },
         method: "POST",
         dataType: "json",
         data: forInsert,
@@ -135,7 +135,7 @@ const EditProfile = () => {
           id="tbFirstName"
           label="FIRST NAME"
           className={classes.textBox}
-          defaultValue={state.user.emp_first_name}
+          defaultValue={state.loggedIn && state.user.emp_first_name}
           helperText=" "
           variant="outlined"
           autoFocus
@@ -157,7 +157,7 @@ const EditProfile = () => {
           id="tbLastName"
           className={classes.textBox}
           label="LAST NAME"
-          defaultValue={state.user.emp_last_name}
+          defaultValue={state.loggedIn && state.user.emp_last_name}
           helperText=" "
           variant="outlined"
           onChange={() =>
@@ -178,7 +178,7 @@ const EditProfile = () => {
           id="tbUserName"
           className={classes.textBox}
           label="USERNAME"
-          defaultValue={state.user.username}
+          defaultValue={state.loggedIn && state.user.username}
           helperText=" "
           variant="outlined"
           onChange={() =>
@@ -199,7 +199,7 @@ const EditProfile = () => {
           id="tbEmail"
           className={classes.textBox}
           label="EMAIL"
-          defaultValue={state.user.emp_email}
+          defaultValue={state.loggedIn && state.user.emp_email}
           helperText=" "
           variant="outlined"
           onChange={() =>

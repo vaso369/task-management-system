@@ -1,6 +1,6 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+
+import { TextField, Button } from "@material-ui/core";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CancelIcon from "@material-ui/icons/Cancel";

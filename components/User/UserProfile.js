@@ -1,15 +1,19 @@
 import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
 import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Collapse,
+  Avatar,
+  IconButton,
+  Typography,
+  Button
+} from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
@@ -20,7 +24,6 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import Logout from "../Logout/Logout";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
-import Button from "@material-ui/core/Button";
 import Error404 from "../Errors/404";
 import BossInfo from "../BossInfo/BossInfo";
 import { url, picturePath } from "../../consts/consts";
@@ -85,9 +88,16 @@ export default function UserProfile() {
   const state = useStateGlobal();
   const dispatch = useDispatchState();
 
+  // useEffect(() => {
+  //   state;
+  // });
+
   useEffect(() => {
     state;
-  });
+  }, []);
+  useEffect(() => {
+    state;
+  }, [state]);
 
   console.log(state);
   const handleExpandClick = () => {
@@ -115,11 +125,6 @@ export default function UserProfile() {
         .split(".")
         .pop()
         .toLowerCase();
-      // if (jQuery.inArray(ext, ["gif", "png", "jpg", "jpeg"]) == -1) {
-      //   alert("Invalid Image File");
-      // }
-      // const oFReader = new FileReader();
-      // oFReader.readAsDataURL(document.getElementById("file-upload").files[0]);
       const f = document.getElementById("file-upload").files[0];
       const fsize = f.size || f.fileSize;
       if (fsize > 2000000) {
@@ -138,9 +143,9 @@ export default function UserProfile() {
           url: url + "?page=upload_photo",
           method: "POST",
           data: form_data,
-//           headers: {
-//             Authorization: "JWT" + " " + localStorage.getItem("token")
-//           },
+          //           headers: {
+          //             Authorization: "JWT" + " " + localStorage.getItem("token")
+          //           },
           dataType: "json",
           cache: false,
           contentType: false,
@@ -187,7 +192,8 @@ export default function UserProfile() {
           <CardHeader
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
-                {state.user.emp_first_name.charAt(0) || "dsfsdfs"}
+                {(state.loggedIn && state.user.emp_first_name.charAt(0)) ||
+                  "dsfsdfs"}
               </Avatar>
             }
             action={
@@ -221,14 +227,20 @@ export default function UserProfile() {
                 </Button>
               </div>
             }
-            title={state.user.emp_first_name + " " + state.user.emp_last_name}
-            subheader={state.user.name}
+            title={
+              state.loggedIn &&
+              state.user.emp_first_name + " " + state.user.emp_last_name
+            }
+            subheader={state.loggedIn && state.user.name}
           />
 
           <Avatar
-            alt={state.user.emp_first_name + " " + state.user.emp_last_name}
+            alt={
+              state.loggedIn &&
+              state.user.emp_first_name + " " + state.user.emp_last_name
+            }
             src={
-              state.user.imagePath !== ""
+              state.loggedIn && state.user.imagePath !== ""
                 ? "https://api-task-management.000webhostapp.com/backend/app/" +
                   state.user.imagePath
                 : state.source
@@ -242,10 +254,10 @@ export default function UserProfile() {
               component="p"
               style={{ margin: "3% 0" }}
             >
-              <strong>Username:</strong> {state.user.username}
+              <strong>Username:</strong> {state.loggedIn && state.user.username}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              <strong>Email:</strong> {state.user.emp_email}
+              <strong>Email:</strong> {state.loggedIn && state.user.emp_email}
             </Typography>
           </CardContent>
           <CardActions className={classes.cardActions}>

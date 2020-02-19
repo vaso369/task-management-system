@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
+
+import { TextField, Button } from "@material-ui/core";
 import $ from "jquery";
-import Button from "@material-ui/core/Button";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Link from "next/link";
 import { useStyles } from "./LoginStyle";
@@ -12,7 +12,6 @@ import Router from "next/router";
 
 const Login = (props) => {
   const classes = useStyles();
-  // const [loggedIn, setLoggedIn] = useState(false);
   const globalState = useStateGlobal();
   const dispatch = useDispatchState();
   const loginSubmit = () => {
@@ -30,13 +29,11 @@ const Login = (props) => {
       data: loginObj,
       success: function(data) {
         console.log(data);
-      //  localStorage.setItem("token", data.jwt);
+        //  localStorage.setItem("token", data.jwt);
         dispatch({
           type: "SET_LOGIN",
           data: data
         });
-        // console.log(loggedIn);
-        // window.location.href = `${urlRedirect}/user`;
         if (data.code === "200") {
           Router.push("/employee");
         } else {
@@ -50,10 +47,6 @@ const Login = (props) => {
     });
   };
   console.log(globalState);
-  // if (Router === `${urlRedirect}/user`) {
-  //   setLoggedIn(true);
-  // }
-  // console.log(Router);
   return (
     <React.Fragment>
       <div id="login" className={classes.login}>

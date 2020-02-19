@@ -10,14 +10,14 @@ const AllTasks = () => {
   useEffect(() => {
     $.ajax({
       url: url + "?page=tasks",
-//       headers: {
-//         Authorization: "JWT" + " " + localStorage.getItem("token")
-//       },
+      //       headers: {
+      //         Authorization: "JWT" + " " + localStorage.getItem("token")
+      //       },
       method: "POST",
       dataType: "json",
       data: {
-        idEmployee: Number(state.user.id),
-        code: Number(state.user.code)
+        idEmployee: Number(state.loggedIn ? state.user.id : 0),
+        code: Number(state.loggedIn ? state.user.code : 0)
       },
       success: function(data) {
         dispatch({

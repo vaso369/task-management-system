@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Avatar from "@material-ui/core/Avatar";
-import AvatarPlaceholder from "../../assets/avatar-placeholder.png";
+import {
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+  Typography,
+  Avatar,
+  Button
+} from "@material-ui/core";
 import { useStateGlobal, useDispatchState } from "../../src/GlobalState";
 import PriorityHighOutlinedIcon from "@material-ui/icons/PriorityHighOutlined";
 import DescriptionOutlinedIcon from "@material-ui/icons/DescriptionOutlined";
 import TodayOutlinedIcon from "@material-ui/icons/TodayOutlined";
 import EmojiFlagsOutlinedIcon from "@material-ui/icons/EmojiFlagsOutlined";
-import Button from "@material-ui/core/Button";
 import $ from "jquery";
 import { url } from "../../consts/consts";
 
@@ -68,10 +69,18 @@ export default function Task(props) {
   const state = useStateGlobal();
   const dispatch = useDispatchState();
 
+  // useEffect(() => {
+  //   // Update the document title using the browser API
+  //   state;
+  // });
+
   useEffect(() => {
-    // Update the document title using the browser API
     state;
-  });
+  }, [state]);
+  useEffect(() => {
+    state;
+  }, [state]);
+
   const doneTask = (idTask) => {
     console.log("radi", idTask);
     $.ajax({
@@ -111,9 +120,12 @@ export default function Task(props) {
             id="panel1a-header"
           >
             <Avatar
-              alt={state.user.emp_first_name + " " + state.user.emp_last_name}
+              alt={
+                state.loggedIn &&
+                state.user.emp_first_name + " " + state.user.emp_last_name
+              }
               src={
-                state.user.imagePath !== ""
+                state.loggedIn && state.user.imagePath !== ""
                   ? "https://api-task-management.000webhostapp.com/backend/app/" +
                     props.data.imagePath
                   : state.source
@@ -121,7 +133,7 @@ export default function Task(props) {
               className={classes.small}
             />
             <Typography className={classes.heading}>
-              {state.user.code === "200"
+              {state.loggedIn && state.user.code === "200"
                 ? props.data.task_name
                 : props.data.emp_first_name +
                   " " +
@@ -155,7 +167,9 @@ export default function Task(props) {
               <strong className={classes.bold}>Deadline:</strong>{" "}
               {props.data.date}
             </Typography>
-            {state.progressTasks && state.user.code === "200" ? (
+            {state.loggedIn &&
+            state.progressTasks &&
+            state.user.code === "200" ? (
               <Button
                 id="doneTaskBtn"
                 variant="contained"

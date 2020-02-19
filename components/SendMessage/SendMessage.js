@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
+
+import { Button, TextField, Modal } from "@material-ui/core";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import SendIcon from "@material-ui/icons/Send";
-import TextField from "@material-ui/core/TextField";
-import Modal from "@material-ui/core/Modal";
 import { url } from "../../consts/consts";
 import $ from "jquery";
 import { makeStyles } from "@material-ui/core/styles";
+import { useStateGlobal } from "../../src/GlobalState";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -50,6 +50,7 @@ const SendMessage = ({ props, employee }) => {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
+  const state = useStateGlobal();
   console.log(props, employee);
   const handleOpen = () => {
     setOpen(true);
@@ -70,9 +71,9 @@ const SendMessage = ({ props, employee }) => {
     console.log(forSend);
     $.ajax({
       url: url + "?page=send_message",
-//       headers: {
-//         Authorization: "JWT" + " " + localStorage.getItem("token")
-//       },
+      //       headers: {
+      //         Authorization: "JWT" + " " + localStorage.getItem("token")
+      //       },
       method: "POST",
       dataType: "json",
       data: forSend,
@@ -104,7 +105,7 @@ const SendMessage = ({ props, employee }) => {
           <h2 id="simple-modal-title">Your message</h2>
           <p id="simple-modal-description">
             Send to:{" "}
-            {props.code === "200"
+            {state.loggedIn && props.code === "200"
               ? props.boss_first_name + " " + props.boss_last_name
               : employee.first_name + " " + employee.last_name}
           </p>

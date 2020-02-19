@@ -1,26 +1,29 @@
 import React, { useState } from "react";
-import SendMessage from "../SendMessage/SendMessage";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
+
 import { useStateGlobal, useDispatchState } from "../../src/GlobalState";
-import AvatarPlaceholder from "../../assets/avatar-placeholder.png";
-import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
-import Logout from "../Logout/Logout";
-import BorderColorIcon from "@material-ui/icons/BorderColor";
-import Button from "@material-ui/core/Button";
+import SendMessage from "../SendMessage/SendMessage";
 import Error404 from "../Errors/404";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import SendIcon from "@material-ui/icons/Send";
-import TextField from "@material-ui/core/TextField";
-import Modal from "@material-ui/core/Modal";
+import Logout from "../Logout/Logout";
 import { url } from "../../consts/consts";
 import $ from "jquery";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  IconButton,
+  Avatar,
+  Typography,
+  Button,
+  TextField,
+  Modal
+} from "@material-ui/core";
+import AvatarPlaceholder from "../../assets/avatar-placeholder.png";
+import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
+import BorderColorIcon from "@material-ui/icons/BorderColor";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import SendIcon from "@material-ui/icons/Send";
 
 const useStyles = makeStyles((theme) => ({
   card: {

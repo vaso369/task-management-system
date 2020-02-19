@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Checkbox from "@material-ui/core/Checkbox";
-import TextField from "@material-ui/core/TextField";
+
+import { Checkbox, TextField, Avatar } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
@@ -8,7 +8,6 @@ import { useStateGlobal, useDispatchState } from "../../src/GlobalState";
 import $ from "jquery";
 import { url, urlRedirect } from "../../consts/consts";
 import { makeStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 
 const useStyles = makeStyles((theme) => ({
@@ -62,9 +61,9 @@ const SearchUsers = () => {
   useEffect(() => {
     $.ajax({
       url: url + "?page=get_team",
-//       headers: {
-//         Authorization: "JWT" + " " + localStorage.getItem("token")
-//       },
+      //       headers: {
+      //         Authorization: "JWT" + " " + localStorage.getItem("token")
+      //       },
       method: "GET",
       dataType: "json",
       data: {
@@ -130,11 +129,6 @@ const SearchUsers = () => {
           />
         )}
       />
-      {/* <style jsx>{`
-        .MuiOutlinedInput-notchedOutline {
-          display: none;
-        }
-      `}</style> */}
     </div>
   );
 };

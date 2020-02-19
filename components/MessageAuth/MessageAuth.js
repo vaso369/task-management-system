@@ -1,7 +1,7 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
+
+import { TextField, Button } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
-import Button from "@material-ui/core/Button";
 import { useStyles } from "./MessageAuthStyle";
 
 const MessageAuth = () => {
@@ -44,7 +44,7 @@ const MessageAuth = () => {
         margin="normal"
         rows="4"
         size="large"
-        multiline="true"
+        multiline
         InputLabelProps={{
           classes: {
             root: classes.cssLabel,
