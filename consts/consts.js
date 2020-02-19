@@ -2,7 +2,7 @@
 // import { useStateGlobal } from "../src/GlobalState";
 // const state = useStateGlobal();
 
-export const url = "https://api-task-management.000webhostapp.com/backend/index.php";
+export const url = "http://www.task-management-sys.epizy.com/backend/index.php";
 
 export const picturePath =
   "https://api-task-management.000webhostapp.com/backend/app/";
