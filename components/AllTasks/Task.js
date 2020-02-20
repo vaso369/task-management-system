@@ -85,9 +85,9 @@ export default function Task(props) {
     console.log("radi", idTask);
     $.ajax({
       url: url + "?page=update_done_task",
-      headers: {
-        Authorization: "JWT" + " " + localStorage.getItem("token")
-      },
+//       headers: {
+//         Authorization: "JWT" + " " + localStorage.getItem("token")
+//       },
       method: "POST",
       dataType: "json",
       data: {
