@@ -143,20 +143,15 @@ export default function UserProfile() {
           url: url + "?page=upload_photo",
           method: "POST",
           data: form_data,
-          headers: {
-            Authorization: "JWT" + " " + localStorage.getItem("token")
-          },
+//           headers: {
+//             Authorization: "JWT" + " " + localStorage.getItem("token")
+//           },
           dataType: "json",
           cache: false,
           contentType: false,
           processData: false,
           success: function(data) {
             console.log(data);
-            // if (data.idBoss === "0") {
-            //   data.code = "201";
-            // } else {
-            //   data.code = "200";
-            // }
             dispatch({
               type: "SET_LOGIN",
               data: data
