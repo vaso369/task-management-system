@@ -29,12 +29,22 @@ const Login = (props) => {
       data: loginObj,
       success: function(data) {
         console.log(data);
-        localStorage.setItem("token", data.jwt);
-        dispatch({
+        // WHEN JWT IS SET
+//         localStorage.setItem("token", data.jwt);
+//         dispatch({
+//           type: "SET_LOGIN",
+//           data: data.user
+//         });
+//         if (data.user.code === "200") {
+//           Router.push("/employee");
+//         } else {
+//           Router.push("/boss");
+//         }
+           dispatch({
           type: "SET_LOGIN",
-          data: data.user
+          data: data
         });
-        if (data.user.code === "200") {
+        if (data.code === "200") {
           Router.push("/employee");
         } else {
           Router.push("/boss");
