@@ -29,12 +29,12 @@ const Login = (props) => {
       data: loginObj,
       success: function(data) {
         console.log(data);
-        //  localStorage.setItem("token", data.jwt);
+        localStorage.setItem("token", data.jwt);
         dispatch({
           type: "SET_LOGIN",
-          data: data
+          data: data.user
         });
-        if (data.code === "200") {
+        if (data.user.code === "200") {
           Router.push("/employee");
         } else {
           Router.push("/boss");

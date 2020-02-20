@@ -110,7 +110,7 @@ const AddTask = ({ props, employee }) => {
       "You have to enter task name!",
       0
     );
-    if (!taskNameSend) arrOk.push(taskNameSend);
+    if (taskNameSend !== "" && taskNameSend !== false) arrOk.push(taskNameSend);
     const description = document.getElementById("tbDescription").value;
     const descSend = taskValidation(
       description,
@@ -118,15 +118,19 @@ const AddTask = ({ props, employee }) => {
       "You have to enter description!",
       1
     );
-    if (!descSend) arrOk.push(descSend);
+    if (descSend !== "" && descSend !== false) arrOk.push(descSend);
     const uniqueId = document.getElementById("tbUniqueId").value;
-    const idSend = taskValidation(
+    let idSend = taskValidation(
       uniqueId,
       "Unique ID accepted",
-      "You have to enter unique ID!",
+      "You have to enter unique ID, just numbers!",
       2
     );
-    if (!idSend) arrOk.push(idSend);
+    if (idSend !== "" && idSend !== false) {
+      idSend = Number(idSend);
+      console.log(typeof idSend);
+      arrOk.push(idSend);
+    }
     const date = document.getElementById("tbDate").value;
     arrOk.push(date);
     let priority = state.priority;
@@ -135,33 +139,39 @@ const AddTask = ({ props, employee }) => {
         "<p style='color:red'>You have to choose priority</p>";
     } else {
       priority = Number(state.priority);
+      document.getElementById("feedbackTask").innerHTML = "";
       arrOk.push(priority);
     }
     console.log(arrOk);
-    // const idEmployee = Number(employee.id);
-    // const idBoss = Number(props.id);
-    // const forSend = {
-    //   idEmployee,
-    //   idBoss,
-    //   taskName,
-    //   description,
-    //   uniqueId,
-    //   date,
-    //   priority
-    // };
-    //  console.log(forSend);
-    // $.ajax({
-    //   url: url + "?page=send_message",
-    //   method: "POST",
-    //   dataType: "json",
-    //   data: forSend,
-    //   success: function(data) {
-    //     alert(`${data.message}`);
-    //   },
-    //   error: function(xhr) {
-    //     console.log(xhr);
-    //   }
-    // });
+    if (arrOk.length === 5) {
+      const idEmployee = Number(employee.id);
+      const idBoss = Number(props.id);
+      const forSend = {
+        idEmployee,
+        idBoss,
+        taskName,
+        description,
+        idSend,
+        date,
+        priority
+      };
+      console.log(forSend);
+      $.ajax({
+        url: url + "?page=add_task",
+        headers: {
+          Authorization: "JWT" + " " + localStorage.getItem("token")
+        },
+        method: "POST",
+        dataType: "json",
+        data: forSend,
+        success: function(data) {
+          alert(`${data.message}`);
+        },
+        error: function(xhr) {
+          console.log(xhr);
+        }
+      });
+    }
   };
   return (
     <React.Fragment>

@@ -17,11 +17,15 @@ const useStyles = makeStyles((theme) => ({
 export default function DatePickers() {
   const classes = useStyles();
 
-  const date = new Date();
-  const dateMonth = date.getMonth();
-  const dateDay = date.getDate();
-  const dateYear = date.getFullYear();
-  const format = `asas`;
+  let d = new Date();
+  let month = "" + (d.getMonth() + 1);
+  let day = "" + d.getDate();
+  let year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  const format = [year, month, day].join("-");
 
   return (
     <form className={classes.container} noValidate>

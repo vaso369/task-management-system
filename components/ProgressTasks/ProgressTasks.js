@@ -11,9 +11,9 @@ const ProgressTasks = () => {
   useEffect(() => {
     $.ajax({
       url: url + "?page=progress_tasks",
-      //       headers: {
-      //         Authorization: "JWT" + " " + localStorage.getItem("token")
-      //       },
+      headers: {
+        Authorization: "JWT" + " " + localStorage.getItem("token")
+      },
       method: "POST",
       dataType: "json",
       data: {
@@ -34,9 +34,9 @@ const ProgressTasks = () => {
 
   return (
     <div>
-      {state.allTasksData.map((el) => (
-        <Task key={el.idTask} data={el} />
-      ))}
+      {state.allTasksData.length !== 0
+        ? state.allTasksData.map((el) => <Task key={el.idTask} data={el} />)
+        : null}
     </div>
   );
 };

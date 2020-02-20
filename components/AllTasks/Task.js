@@ -85,6 +85,9 @@ export default function Task(props) {
     console.log("radi", idTask);
     $.ajax({
       url: url + "?page=update_done_task",
+      headers: {
+        Authorization: "JWT" + " " + localStorage.getItem("token")
+      },
       method: "POST",
       dataType: "json",
       data: {
@@ -93,15 +96,6 @@ export default function Task(props) {
       },
       success: function(data) {
         console.log("UPDATED");
-        console.log(data);
-        // if (data.length === 0) {
-        //   document.querySelector("#feedbackTasks").innerHTML =
-        //     "<h1>You don't have any tasks in progress more!";
-        // }
-        dispatch({
-          type: "SET_TASKS",
-          data: data
-        });
       },
       error: function(xhr) {
         console.log(xhr);
